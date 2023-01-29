@@ -8,7 +8,6 @@ const {
   showBalance,
 } = require('./index');
 
-
 program
   .command('CREATE <accountNumber> <name>')
   //   .alias('c')
@@ -35,10 +34,10 @@ program
 
 program
   .command('BALANCE <accountNumber')
-//   .alias('b')
+  //   .alias('b')
   .description('Check account balance')
-  .action(({accountNumber}) => {
-    showBalance(accountNumber);
+  .action((accountNumber) => {
+    showBalance({accountNumber});
   });
 
 program.parse(process.argv);

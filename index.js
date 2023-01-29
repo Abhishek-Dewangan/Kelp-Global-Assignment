@@ -30,7 +30,7 @@ const createAccount = async (customer) => {
   } catch (error) {
     console.log(error);
   }
-  //   connection.close();
+  // connection.close();
 };
 
 // Deposit Amount
@@ -41,6 +41,7 @@ const depositAmmount = async ({accountNumber, amount}) => {
   } catch (error) {
     console.log(error);
   }
+  // connection.close();
 };
 
 // Withdraw amount
@@ -59,16 +60,22 @@ const withdrawAmount = async ({accountNumber, amount}) => {
   } catch (error) {
     console.log(error);
   }
+  // connection.close();
 };
 
 // Show balance
 const showBalance = async ({accountNumber}) => {
   try {
     const account = await Customer.findOne({accountNumber});
-    console.log(account.balance);
+    if (account) {
+      console.log(account.balance);
+    } else {
+      console.log('Account does not exist');
+    }
   } catch (error) {
     console.log(error);
   }
+  // connection.close();
 };
 
 module.exports = {createAccount, depositAmmount, withdrawAmount, showBalance};
